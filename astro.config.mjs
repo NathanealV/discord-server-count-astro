@@ -7,13 +7,11 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 
 // https://astro.build/config
-import netlify from "@astrojs/netlify/functions";
+import vercel from "@astrojs/vercel/edge";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
   output: "server",
-  adapter: netlify({
-    dist: new URL("./dist/", import.meta.url),
-  }),
+  adapter: vercel(),
 });
