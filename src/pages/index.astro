@@ -5,7 +5,7 @@ import Button from "../components/DiscordButton";
 import Logout from "../components/Logout";
 
 const user = getUser({ client: Astro });
-const { pathname } = Astro.url;
+const { origin } = Astro.url;
 
 let servers: any[] = [];
 
@@ -72,7 +72,7 @@ if (user) {
       user ? (
         <Logout client:visible />
       ) : (
-        <Button client:visible pathName={pathname} />
+        <Button client:visible origin={origin} />
       )
     }
   </main>

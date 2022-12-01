@@ -1,9 +1,7 @@
 import { DiscordButton } from "@astro-auth/ui";
 
-type Props = {
-  pathName: string;
-};
+type Props = { origin: string };
 
-export default function Button({ pathName }: Props) {
-  return <DiscordButton callbackURL={pathName} />;
+export default function Button({ origin }: Props) {
+  return <DiscordButton callbackURL={origin} />;
 }
