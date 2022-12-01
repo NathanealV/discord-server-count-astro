@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { DiscordButton } from "@astro-auth/ui";
+import { getUser } from "@astro-auth/core";
+import Logout from "../components/Logout";
+
+const user = getUser({ client: Astro });
+
+let servers: any[] = [];
+
+if (user) {
+  await fetch("https://discord.com/api/v10/users/@me/guilds", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${user.accessToken}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      servers = json;
+    })
+    .catch((error) => console.error(error));
+}
+---
+
+<Layout
+  title="Discord Server Count"
+  description="Check how many Discord servers you're in right now"
+>
+  <main
+    class="flex min-h-screen flex-col items-center justify-center bg-[#36393f]"
+  >
+    <h1 class="text-[1.65rem] font-bold text-white md:text-5xl">
+      Discord Server Count
+    </h1>
+    <p class="p-5 text-center text-base text-white md:text-xl">
+      Because somehow this isn't built into Discord already.
+    </p>
+    {
+      user && (
+        <div class="rounded-lg bg-[#292b2f] px-4 py-3 text-white mb-5">
+          <div class="flex flex-row gap-4 divide-x-2 divide-solid justify-center">
+            <div class="flex flex-row gap-3 justify-center items-center">
+              <img src={user.user.image} class="w-12 h-12 rounded-full" />
+              <div class="flex flex-col">
+                <div class="font-semibold text-lg w-fit max-w-[4rem] md:max-w-none whitespace-nowrap overflow-hidden text-ellipsis">
+                  {user.user.name}
+                </div>
+                <p class="text-sm text-white/50">
+                  #{user.user.originalUser.discriminator}
+                </p>
+              </div>
+            </div>
+            {servers.length > 0 && (
+              <div class="pl-4 flex flex-col justify-center items-start">
+                <p class="font-semibold text-xl">{servers.length}</p>
+                <p class="text-sm text-white/50">servers</p>
+              </div>
+            )}
+            <div class="pl-4 pr-2 flex flex-col justify-center items-start">
+              <p class="font-semibold text-xl">
+                {user.user.originalUser.premium_type === 2 ? "200" : "100"}
+              </p>
+              <p class="text-sm text-white/50">limit</p>
+            </div>
+          </div>
+        </div>
+      )
+    }
+    {
+      user ? (
+        <Logout client:visible />
+      ) : (
+        <DiscordButton client:visible callbackURL="http://localhost:3000/" />
+      )
+    }
+  </main>
+</Layout>
