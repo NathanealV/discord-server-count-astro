@@ -71,7 +71,7 @@ if (user) {
       user ? (
         <Logout client:visible />
       ) : (
-        <DiscordButton client:visible callbackURL="http://localhost:3000/" />
+        <DiscordButton client:visible callbackURL={window.location.origin} />
       )
     }
   </main>
