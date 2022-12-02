@@ -157,10 +157,10 @@
     node-fetch "^3.2.5"
     which-pm-runs "^1.1.0"
 
-"@astrojs/vercel@^2.3.4":
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/@astrojs/vercel/-/vercel-2.3.4.tgz#79e3658786bebfa57d1c0efdec1b4db35ee3f4c4"
-  integrity sha512-1mrPdlb68Y+DPtDpOfuRlene9F2t+wICXDLoG+bII9ryURxTYCReV5JQ1uwlKQ3yizQLIKIzm0rs5yp+K5FWbw==
+"@astrojs/vercel@^0.0.0-set-cookie-20221202105120":
+  version "0.0.0-set-cookie-20221202105120"
+  resolved "https://registry.yarnpkg.com/@astrojs/vercel/-/vercel-0.0.0-set-cookie-20221202105120.tgz#f3ed0922c58b1523208615967208399b676101d6"
+  integrity sha512-QWSeIzwn85SWSDlr8Q0vrA9ZMmFHivATnWekgSGck+VROy6wo4vRTlBZrCtD/qdO2Oc/7oyqKtfmE9J6S+h4dA==
   dependencies:
     "@astrojs/webapi" "^1.1.1"
     "@vercel/nft" "^0.22.1"
