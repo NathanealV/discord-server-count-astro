@@ -24,5 +24,9 @@ export const all = AstroAuth({
         ...user,
       };
     },
+    redirectError: async (error) => {
+      console.log(error.message);
+      return "/";
+    },
   },
 });
