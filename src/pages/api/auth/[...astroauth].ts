@@ -6,7 +6,7 @@ export const all = AstroAuth({
     DiscordProvider({
       clientId: import.meta.env.DISCORD_CLIENT_ID,
       clientSecret: import.meta.env.DISCORD_CLIENT_SECRET,
-      scope: "identify email guilds",
+      scope: "identify guilds",
     }),
   ],
   hooks: {
